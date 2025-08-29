@@ -27,7 +27,7 @@ public class RolesActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // If StudentActivity exists
-                Intent intent = new Intent(RolesActivity.this, StudentActivity.class);
+                Intent intent = new Intent(RolesActivity.this, StudentRegisterActivity.class);
                 startActivity(intent);
 
                 // If not yet created, comment out above and use:
@@ -40,7 +40,7 @@ public class RolesActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // If EmployerActivity exists
-                Intent intent = new Intent(RolesActivity.this, EmployerActivity.class);
+                Intent intent = new Intent(RolesActivity.this, EmployerRegisterActivity.class);
                 startActivity(intent);
 
                 // If not yet created, comment out above and use:
