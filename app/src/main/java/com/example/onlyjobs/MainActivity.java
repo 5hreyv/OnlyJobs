@@ -43,9 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
     // This matches your XML attribute: android:onClick="openLearnMorePage"
     public void openLearnMorePage(View view) {
-        // Example: open a webpage
-        String url = "https://yourwebsite.com/learnmore"; // replace with your link
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        Intent intent = new Intent(this, LearnMoreActivity.class);
         startActivity(intent);
     }
 }

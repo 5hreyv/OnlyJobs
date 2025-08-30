@@ -16,10 +16,20 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".LearnMoreActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".RolesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StudentAuthActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EmployerAuthActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

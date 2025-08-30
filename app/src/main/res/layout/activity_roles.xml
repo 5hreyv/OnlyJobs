@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:padding="16dp"
-    tools:context=".RolesActivity">
+    tools:context="com.example.onlyjobs.RolesActivity">
 
     <!-- Title -->
     <TextView
@@ -49,7 +49,7 @@
         app:layout_constraintTop_toBottomOf="@id/tvSubtitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/cardEmployer"
-        app:layout_constraintHorizontalWeight="1"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintHorizontal_chainStyle="spread"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="8dp">
@@ -64,19 +64,19 @@
                 android:id="@+id/imgStudent"
                 android:layout_width="72dp"
                 android:layout_height="72dp"
+                android:contentDescription="Student icon"
                 android:src="@drawable/student"
-                app:tint="@color/purple_dark"
-                android:contentDescription="Student icon" />
+                app:tint="@color/purple_dark" />
 
             <TextView
                 android:id="@+id/tvStudent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Student"
-                android:textSize="18sp"
-                android:textStyle="bold"
                 android:textColor="@color/purple_dark"
-                android:layout_marginTop="12dp"/>
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
@@ -94,7 +94,7 @@
         app:layout_constraintTop_toBottomOf="@id/tvSubtitle"
         app:layout_constraintStart_toEndOf="@id/cardStudent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontalWeight="1"
+        app:layout_constraintHorizontal_weight="1"
         android:layout_marginTop="40dp"
         android:layout_marginStart="8dp">
 
@@ -116,11 +116,11 @@
                 android:id="@+id/tvEmployer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
                 android:text="Employer"
-                android:textSize="18sp"
-                android:textStyle="bold"
                 android:textColor="@color/purple_dark"
-                android:layout_marginTop="12dp"/>
+                android:textSize="18sp"
+                android:textStyle="bold" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
