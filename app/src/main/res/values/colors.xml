@@ -4,4 +4,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="purple_light">#B66EFF</color>
     <color name="purple_dark">#6A2DFF</color>
+    <color name="purple_primary">#FF6200EE</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="off_white_background">#FFF5F5F5</color>
+    <color name="grey">#FF888888</color>
 </resources>

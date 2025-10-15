@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="24dp"
     android:background="@android:color/white">
 
@@ -47,7 +48,27 @@
             android:text="Login"
             android:backgroundTint="@color/purple_dark"
             android:textColor="@android:color/white"
-            android:padding="12dp" />
+            android:padding="12dp"
+            android:layout_marginBottom="16dp" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OR"
+            android:textColor="@android:color/darker_gray"
+            android:layout_marginBottom="16dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnGoogleSignIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sign In with Google"
+            app:icon="@drawable/ic_google_logo"
+            app:iconGravity="textStart"
+            android:backgroundTint="@android:color/white"
+            android:textColor="@android:color/black"
+            app:strokeColor="@android:color/darker_gray"
+            app:strokeWidth="1dp"
+            android:padding="12dp" />
     </LinearLayout>
 </ScrollView>
