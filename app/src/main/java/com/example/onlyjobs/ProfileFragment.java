@@ -19,24 +19,28 @@ import com.google.firebase.auth.FirebaseUser;
 public class ProfileFragment extends Fragment {
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup c, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_profile, c, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         ImageView imgProfile = view.findViewById(R.id.imgProfile);
         TextView tvStudentName = view.findViewById(R.id.tvStudentName);
         TabLayout tabLayout = view.findViewById(R.id.profile_tab_layout);
         ViewPager2 viewPager = view.findViewById(R.id.profile_view_pager);
 
-        // Set up adapter for nested fragments
+        // Set up adapter for the nested "Personal Info" and "Jobs Applied" fragments
         ProfileViewPagerAdapter adapter = new ProfileViewPagerAdapter(this);
         viewPager.setAdapter(adapter);
 
-        // Link tabs with viewpager
+        // Link the TabLayout with the ViewPager2
         new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
-            tab.setText(position == 0 ? "Personal Info" : "Jobs Applied");
+            if (position == 0) {
+                tab.setText("Personal Info");
+            } else {
+                tab.setText("Jobs Applied");
+            }
         }).attach();
 
-        // Load user profile data
+        // Load user data from Firebase Auth
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             tvStudentName.setText(user.getDisplayName());

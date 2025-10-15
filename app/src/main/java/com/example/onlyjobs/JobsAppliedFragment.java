@@ -11,7 +11,8 @@ import androidx.fragment.app.Fragment;
 public class JobsAppliedFragment extends Fragment {
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup c, @Nullable Bundle s) {
-        return inflater.inflate(R.layout.fragment_jobs_applied, c, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        // This will show the layout that says "Jobs you've applied to will appear here."
+        return inflater.inflate(R.layout.fragment_jobs_applied, container, false);
     }
 }

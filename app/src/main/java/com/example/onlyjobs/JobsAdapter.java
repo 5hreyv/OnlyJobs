@@ -6,20 +6,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
-import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import java.util.ArrayList;
 
-public class JobsAdapter extends FirestoreRecyclerAdapter<Job, JobsAdapter.JobViewHolder> {
+public class JobsAdapter extends RecyclerView.Adapter<JobsAdapter.JobViewHolder> {
 
-    public JobsAdapter(@NonNull FirestoreRecyclerOptions<Job> options) {
-        super(options);
-    }
+    private final ArrayList<Job> jobList;
 
-    @Override
-    protected void onBindViewHolder(@NonNull JobViewHolder holder, int position, @NonNull Job model) {
-        holder.tvJobTitle.setText(model.getJobTitle());
-        holder.tvCompanyName.setText(model.getCompanyName());
-        holder.tvJobDescription.setText(model.getDescription());
+    public JobsAdapter(ArrayList<Job> jobList) {
+        this.jobList = jobList;
     }
 
     @NonNull
@@ -29,8 +23,22 @@ public class JobsAdapter extends FirestoreRecyclerAdapter<Job, JobsAdapter.JobVi
         return new JobViewHolder(view);
     }
 
+    @Override
+    public void onBindViewHolder(@NonNull JobViewHolder holder, int position) {
+        Job job = jobList.get(position);
+        holder.tvJobTitle.setText(job.getJobTitle());
+        holder.tvCompanyName.setText(job.getCompanyName());
+        holder.tvJobDescription.setText(job.getDescription());
+    }
+
+    @Override
+    public int getItemCount() {
+        return jobList.size();
+    }
+
     static class JobViewHolder extends RecyclerView.ViewHolder {
         TextView tvJobTitle, tvCompanyName, tvJobDescription;
+
         public JobViewHolder(@NonNull View itemView) {
             super(itemView);
             tvJobTitle = itemView.findViewById(R.id.tvJobTitle);

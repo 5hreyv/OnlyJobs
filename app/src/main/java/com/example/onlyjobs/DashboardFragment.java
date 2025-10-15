@@ -9,44 +9,53 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import java.util.ArrayList;
 
 public class DashboardFragment extends Fragment {
+
+    private RecyclerView jobsRecyclerView;
     private JobsAdapter adapter;
+    private ArrayList<Job> jobList;
+    private DatabaseReference databaseReference;
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup c, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_dashboard, c, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
 
-        RecyclerView recyclerView = view.findViewById(R.id.jobsRecyclerView);
+        jobsRecyclerView = view.findViewById(R.id.jobsRecyclerView);
+        jobsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        Query query = FirebaseFirestore.getInstance()
-                .collection("jobs")
-                .orderBy("companyName", Query.Direction.ASCENDING);
+        jobList = new ArrayList<>();
+        adapter = new JobsAdapter(jobList);
+        jobsRecyclerView.setAdapter(adapter);
 
-        FirestoreRecyclerOptions<Job> options = new FirestoreRecyclerOptions.Builder<Job>()
-                .setQuery(query, Job.class)
-                .build();
+        // Get a reference to the "jobs" node in your Realtime Database
+        databaseReference = FirebaseDatabase.getInstance().getReference("jobs");
 
-        adapter = new JobsAdapter(options);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(adapter);
+        // Add a listener to fetch the data in real-time
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                jobList.clear(); // Clear the list before adding new data
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    Job job = dataSnapshot.getValue(Job.class);
+                    jobList.add(job);
+                }
+                adapter.notifyDataSetChanged(); // Refresh the list in the UI
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // You can add a Toast here to show if there's an error
+            }
+        });
 
         return view;
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        adapter.startListening();
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        adapter.stopListening();
     }
 }

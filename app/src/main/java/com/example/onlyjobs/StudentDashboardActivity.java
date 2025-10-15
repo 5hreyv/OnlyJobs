@@ -14,11 +14,12 @@ public class StudentDashboardActivity extends AppCompatActivity {
 
         BottomNavigationView navView = findViewById(R.id.bottom_nav_view);
 
-        // Load the default fragment
+        // Load the DashboardFragment by default when the activity starts
         if (savedInstanceState == null) {
             loadFragment(new DashboardFragment());
         }
 
+        // Handle navigation item clicks
         navView.setOnItemSelectedListener(item -> {
             Fragment selectedFragment = null;
             int itemId = item.getItemId();
@@ -31,12 +32,13 @@ public class StudentDashboardActivity extends AppCompatActivity {
 
             if (selectedFragment != null) {
                 loadFragment(selectedFragment);
-                return true;
+                return true; // Event was handled
             }
-            return false;
+            return false; // Event was not handled
         });
     }
 
+    // Helper method to switch fragments
     private void loadFragment(Fragment fragment) {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.nav_host_fragment, fragment)
