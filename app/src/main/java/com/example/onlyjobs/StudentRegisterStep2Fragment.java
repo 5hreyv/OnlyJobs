@@ -1,5 +1,6 @@
 package com.example.onlyjobs;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-// Add these required imports
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -89,13 +89,19 @@ public class StudentRegisterStep2Fragment extends Fragment {
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("users");
 
         // Create a new User object with all the collected data
-        User newUser = new User(userId, name, email, university, branch); // Assuming User class constructor
+        User newUser = new User(userId, name, email, university, branch);
 
         // Save the user object under their unique user ID
         databaseReference.child(userId).setValue(newUser)
                 .addOnSuccessListener(aVoid -> {
                     Toast.makeText(getContext(), "Registration successful!", Toast.LENGTH_SHORT).show();
-                    // TODO: Navigate to the Student Dashboard Activity here
+
+                    // Navigate to the Student Dashboard Activity
+                    Intent intent = new Intent(getActivity(), StudentDashboardActivity.class);
+                    // Clear the back stack so the user can't go back to the login/register screen
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    // Start the new activity
+                    startActivity(intent);
                 })
                 .addOnFailureListener(e -> {
                     Toast.makeText(getContext(), "Failed to save user details.", Toast.LENGTH_SHORT).show();
