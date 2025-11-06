@@ -22,12 +22,6 @@
         <activity android:name=".LearnMoreActivity"
             android:exported="false"/>
         <activity
-            android:name=".RolesActivity"
-            android:exported="false" />
-        <activity
-            android:name=".EmployerAuthActivity"
-            android:exported="false" />
-        <activity
             android:name=".StudentAuthActivity"
             android:exported="true">
             <intent-filter>
@@ -36,9 +30,11 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".StudentDashboardActivity"
-            android:exported="false" />
+        <activity android:name=".RolesActivity" />
+        <activity android:name=".EmployerAuthActivity" />
+        <activity android:name=".StudentDashboardActivity" />
+        <activity android:name=".EmployerDashboardActivity" />
     </application>
+
 
 </manifest>

@@ -56,6 +56,8 @@ dependencies {
             // IMPORTANT: Use firebase-ui-database for Realtime Database
             implementation ("com.firebaseui:firebase-ui-database:8.0.2")
     implementation ("com.github.bumptech.glide:glide:4.16.0")
+    implementation(platform("com.google.firebase:firebase-bom:34.5.0"))
+    implementation("com.google.firebase:firebase-analytics")
 
     // Testing
     testImplementation (libs.junit)
