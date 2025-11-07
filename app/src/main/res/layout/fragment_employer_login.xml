@@ -25,4 +25,29 @@
         android:layout_height="wrap_content"
         android:text="Login" />
 
+    <Button
+        android:id="@+id/googleSignInBtn"
+        android:text="Continue with Google"
+        android:backgroundTint="@android:color/holo_blue_light"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/emailInput"
+            android:hint="Enter your email"
+            android:inputType="textEmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/sendLinkBtn"
+            android:text="Send Login Link"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <View
+            android:layout_height="20dp"
+            android:layout_width="match_parent" />
+
+
 </LinearLayout>

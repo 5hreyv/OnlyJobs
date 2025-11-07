@@ -1,5 +1,3 @@
-// build.gradle (Module :app)
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.google.gms.google.services)
@@ -15,7 +13,6 @@ android {
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -28,39 +25,44 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
 }
+
 dependencies {
 
-    // Firebase Libraries (no versions needed because of the BOM)
-    implementation("com.google.firebase:firebase-auth:23.0.0")
-    implementation("com.google.firebase:firebase-database:21.0.0")
-    // For Realtime Database
-
-    // Google Services
-    implementation (libs.play.services.auth)
-            implementation (libs.credentials)
-            implementation (libs.credentials.play.services.auth)
-            implementation (libs.googleid)
-
-            // AndroidX & Material Components
-            implementation (libs.appcompat)
-            implementation (libs.material)
-            implementation (libs.activity)
-            implementation (libs.constraintlayout)
-
-            // UI Libraries
-            // IMPORTANT: Use firebase-ui-database for Realtime Database
-            implementation ("com.firebaseui:firebase-ui-database:8.0.2")
-    implementation ("com.github.bumptech.glide:glide:4.16.0")
+    // ✅ Always declare the Firebase BOM FIRST
     implementation(platform("com.google.firebase:firebase-bom:34.5.0"))
+
+    // ✅ Firebase Libraries (NO version numbers when using the BOM)
+    implementation("com.google.firebase:firebase-auth")
+    implementation("com.google.firebase:firebase-firestore")
+    implementation("com.google.firebase:firebase-database")
     implementation("com.google.firebase:firebase-analytics")
 
-    // Testing
-    testImplementation (libs.junit)
-            androidTestImplementation (libs.ext.junit)
-            androidTestImplementation (libs.espresso.core)
+    // ✅ Google Sign-In + Credentials
+    implementation(libs.play.services.auth)
+    implementation(libs.credentials)
+    implementation(libs.credentials.play.services.auth)
+    implementation(libs.googleid)
+
+    // ✅ FirebaseUI (optional but fine)
+    implementation("com.firebaseui:firebase-ui-database:8.0.2")
+
+    // ✅ Image loading
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+
+    // ✅ AndroidX + Material
+    implementation(libs.appcompat)
+    implementation(libs.material)
+    implementation(libs.activity)
+    implementation(libs.constraintlayout)
+
+    // ✅ Testing
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.ext.junit)
+    androidTestImplementation(libs.espresso.core)
 }

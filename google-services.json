@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "100790812488",
-    "project_id": "onlyjobs-project",
-    "storage_bucket": "onlyjobs-project.firebasestorage.app"
+    "project_number": "274052052885",
+    "project_id": "only-jobs-project",
+    "storage_bucket": "only-jobs-project.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:100790812488:android:d80b096be70711c2027d7d",
+        "mobilesdk_app_id": "1:274052052885:android:4c2f7e3d166d3058a0289c",
         "android_client_info": {
           "package_name": "com.example.onlyjobs"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyApYz2u-tsO0SoD-Vo6_WJg4Ci5QIaU0pQ"
+          "current_key": "AIzaSyBU-_acvRTmOgiQUqbdfzx0KIQuNwiZzHM"
         }
       ],
       "services": {
